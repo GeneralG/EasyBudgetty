@@ -11,7 +11,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import za.co.easybudgetty.data.adapters.adapters.BudgetItemsAdapter;
+import za.co.easybudgetty.data.adapters.BudgetItemsAdapter;
 import za.co.easybudgetty.data.BudgetsContract;
 import za.co.easybudgetty.menuHelpers.MainContentMenu;
 
@@ -36,10 +36,10 @@ import za.co.easybudgetty.data.helpers.DBManager;
 
 
             RecyclerView recyclerView;
-            recyclerView = (RecyclerView) findViewById(R.id.RecyclerBudgets);
+            recyclerView = (RecyclerView) findViewById(R.id.RecyclerMessages);
             BudgetsContract bc = new BudgetsContract();
             BudgetItemsAdapter mAdapter = new BudgetItemsAdapter(db);
-            mAdapter = new za.co.easybudgetty.data.adapters.adapters.BudgetItemsAdapter(db);
+            mAdapter = new BudgetItemsAdapter(db);
             RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
             recyclerView.setLayoutManager(mLayoutManager);
             recyclerView.setItemAnimator(new DefaultItemAnimator());

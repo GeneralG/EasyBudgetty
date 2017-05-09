@@ -1,3 +1,15 @@
+buildscript {
+    repositories {
+    }
+    dependencies {
+    }
+}
+
+allprojects {
+    repositories {
+    }
+}
+
 apply plugin: 'com.android.application'
 
 android {
@@ -11,6 +23,7 @@ android {
         versionCode 1
         versionName "1.0"
     }
+
     buildTypes {
         release {
             minifyEnabled false
