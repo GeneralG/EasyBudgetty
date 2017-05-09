@@ -34,11 +34,10 @@ import za.co.easybudgetty.data.helpers.DBManager;
 
             Log.d(TAG, "Initializing recycler view");
 
-
             RecyclerView recyclerView;
             recyclerView = (RecyclerView) findViewById(R.id.RecyclerMessages);
             BudgetsContract bc = new BudgetsContract();
-            BudgetItemsAdapter mAdapter = new BudgetItemsAdapter(db);
+            BudgetItemsAdapter mAdapter;
             mAdapter = new BudgetItemsAdapter(db);
             RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
             recyclerView.setLayoutManager(mLayoutManager);
