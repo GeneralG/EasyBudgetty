@@ -1,0 +1,19 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="za.co.easybudgetty.MainActivity">
+    <group android:id="@+id/mnMainMenu">
+        <item android:title="Banks" android:id="@+id/mnBanks">
+        </item>
+        <item android:title="DebitCreditors" android:id="@+id/mnDebitCreditors">
+        </item>
+        <item android:title="Categories" android:id="@+id/mnCategories">
+        </item>
+        <item android:title="Messages" android:id="@+id/mnMessages">
+        </item>
+        <item android:title="Main Screen" android:id="@+id/mnMainActivity">
+        </item>
+        <item android:title="Budgets" android:id="@+id/mnBudgets">
+        </item>
+    </group>
+</menu>

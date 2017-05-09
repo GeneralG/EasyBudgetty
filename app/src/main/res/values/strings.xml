@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">EasyBudgetty</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_categories">Categories</string>
+    <string name="title_activity_debit_creditors">debitCreditors</string>
+    <string name="title_activity_bank_accounts">bankAccounts</string>
+    <string name="title_activity_budgets">budgets</string>
+
+    <string name="title_activity_messages">Messages</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
+</resources>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="BankNames">
+        <item>Nedbank</item>
+        <item>Standard Bank</item>
+        <item>First National Bank</item>
+        <item>ABSA</item>
+        <item>FNB</item>
+    </string-array>
+    <string-array name="DebitCreditor">
+        <item>Spar</item>
+        <item>PnP</item>
+        <item>Shoprite</item>
+        <item>LEGALWISE</item>
+        <item>Telkom</item>
+    </string-array>
+    <string-array name="Categories">
+        <item>Groceries</item>
+        <item>Entertainment</item>
+        <item>Transport</item>
+        <item>Medical</item>
+        <item>Insurance</item>
+        <item>House Hold</item>
+    </string-array>
+    <string name="TransactionAmount">%TransactionAmount%</string>
+    <string name="TransactionDebitCreditor">%TransactionDebitCreditor%</string>
+    <string name="BankName">%BankName%</string>
+</resources>

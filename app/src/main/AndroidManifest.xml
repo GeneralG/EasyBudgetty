@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="za.co.easybudgetty">
+
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name=".smsMonitor"
+            android:exported="false" />
+
+        <receiver
+            android:name=".SMSProcessing.Processor"
+            android:exported="true">
+            <intent-filter android:priority="1000">
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+                <action android:name="android.intent.action.MANAGE_PACKAGE_STORAGE" />
+            </intent-filter>
+        </receiver>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAg6xmauhuN2gdXlu-ePluWpw341pHiIy8" />
+
+        <activity
+            android:name=".Categories"
+            android:label="@string/title_activity_categories"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".DebitCreditors"
+            android:label="DebitCreditors"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".BankAccounts"
+            android:label="BankAccounts"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Budgets"
+            android:label="Budgets"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Messages"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_messages"
+            android:theme="@style/FullscreenTheme"></activity>
+    </application>
+
+</manifest>

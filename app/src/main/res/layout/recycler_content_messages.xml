@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvMessages"/>
+
+    <!--the message has been passed through regex and it has detected the debitor as -->
+    <!-- Make this a button to resolve complications -->
+    <!--Make this a button to re select the amount from message -->
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnDebitor" />
+
+    <!--Make this a button to re select the amount from message -->
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnAmount"/>
+
+    <!--The target budget that the amounts should be set against-->
+    <ExpandableListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/elvBudgets">
+    </ExpandableListView>
+
+
+</LinearLayout>
