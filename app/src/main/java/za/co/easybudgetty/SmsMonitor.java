@@ -14,14 +14,14 @@ import za.co.easybudgetty.data.helpers.*;
  * <p/>
  * TODO: Customize class - update intent actions and extra parameters.
  */
-public class smsMonitor extends IntentService {
+public class SmsMonitor extends IntentService {
 
     public static final String ACTION_START = "za.co.easybudgetty.action.START";
     public static final String ACTION_STOP = "za.co.easybudgetty.action.STOP";
 
     private za.co.easybudgetty.SMSProcessing.Processor processor;
-    public smsMonitor() {
-        super("smsMonitor");
+    public SmsMonitor() {
+        super("SmsMonitor");
     }
 
     @Override

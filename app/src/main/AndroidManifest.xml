@@ -23,7 +23,7 @@
         </activity>
 
         <service
-            android:name=".smsMonitor"
+            android:name=".SmsMonitor"
             android:exported="false" />
 
         <receiver

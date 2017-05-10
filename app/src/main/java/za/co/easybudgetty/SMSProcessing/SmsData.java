@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * Model object to store the core data of the sms, objects of this class
  * should be passed through the application
  */
-public class smsData
+public class SmsData
 {
 
     /*

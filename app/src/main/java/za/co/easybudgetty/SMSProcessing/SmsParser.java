@@ -8,7 +8,7 @@ package za.co.easybudgetty.SMSProcessing;
  *  this class will also parse the strings to the correct types.
  *  error handling and logging crucial.
  */
-public class smsParser {
+public class SmsParser {
 
     //get Bank
 

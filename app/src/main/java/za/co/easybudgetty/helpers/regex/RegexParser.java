@@ -25,8 +25,8 @@ import java.util.regex.Pattern;
  *      User interface to reload from db?
  *          use an even on the interface to relaod from database.
  */
-public class regexParser {
-    private static String TAG = "za.co.easybudgetty.helpers.regex.regexParser";
+public class RegexParser {
+    private static String TAG = "za.co.easybudgetty.helpers.regex.RegexParser";
 
     private static Pattern amountPattern = Pattern.compile("[0-9].2[0-9]");
     private static Pattern bankPattern = Pattern.compile("Nedbank");

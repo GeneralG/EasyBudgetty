@@ -9,7 +9,7 @@ import android.provider.Telephony;
 import android.telephony.SmsMessage;
 import android.util.Log;
 
-import za.co.easybudgetty.helpers.regex.regexParser;
+import za.co.easybudgetty.helpers.regex.RegexParser;
 
 /**
  * Created by tyler on 2016/05/12.
@@ -28,7 +28,7 @@ public class Processor extends BroadcastReceiver {
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
                     messages = Telephony.Sms.Intents.getMessagesFromIntent(intent);
                     Log.i(TAG, "onReceive: " + String.valueOf(messages.length));
-                    regexParser.checkMessageValidility(messages[0].getMessageBody());
+                    RegexParser.checkMessageValidility(messages[0].getMessageBody());
                 }
                 else
                 {
@@ -44,7 +44,7 @@ public class Processor extends BroadcastReceiver {
                                 Log.i(TAG, "onReceive: BELOW KIT KAT");
                                 String senderNum = phoneNumber;
                                 String message = currentMessage.getDisplayMessageBody();
-                                regexParser.checkMessageValidility(message);
+                                RegexParser.checkMessageValidility(message);
                                 Log.i("SmsReceiver", "senderNum: "+ senderNum + "; message: " + message);
                             } // end for loop
                         }
