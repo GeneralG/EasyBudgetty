@@ -1,16 +1,17 @@
 package za.co.easybudgetty.helpers.regex;
 
-import android.test.suitebuilder.annotation.LargeTest;
+import junit.framework.AssertionFailedError;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
+
+import za.co.easybudgetty.BuildConfig;
+
+import static org.junit.Assert.*;
 
 /**
- * Created by tyler on 2016/06/26.
+ * Created by tyler on 2017/05/19.
  */
-
-@LargeTest
-public class RegexParserNedbankTest {
+public class RegexParserTest {
 
     private static final String TEST_DEPOSITE_MESSAGE = "Nedbank: Electronic Banking EFT deposit of R3000.00 into acc **9999 Avail bal R10000.00 at 20:01 on 01May17. Reg: Monkeys need food";
     private static final String TEST_CASHWITHDRAWAL_MESSAGE = "Nedbank: ATM Cash withdrawal of R150.00 from acc **9999 @ ABSA FRENDLY DURBANVIDU. Avail bal R10000.00 at 20:01 on 15May17. Reg: Monkeys need food";
@@ -22,21 +23,22 @@ public class RegexParserNedbankTest {
     private static final String ZA_FAKE_NUMBER_TOLONG="+27000000000000000000";
 
     @Test
-    public void checkNumberValidility()
+    public void checkMessageNumber()
     {
         RegexParser reggy = new RegexParser();
-        assert(reggy.checkNumberValidility(ZA_NUMBER));
-        assert(reggy.checkNumberValidility(ZA_INT_NUMBER));
-        assert(reggy.checkNumberValidility(ZA_FAKE_NUMBER));
-        assert(reggy.checkNumberValidility(ZA_FAKE_NUMBER_TOLONG));
+        //this is valid should return true
+        assertTrue(reggy.checkNumberValidility(ZA_NUMBER));
+        assertTrue(reggy.checkNumberValidility(ZA_INT_NUMBER));
+        assertTrue(reggy.checkNumberValidility(ZA_FAKE_NUMBER));
+        assertTrue(reggy.checkNumberValidility(ZA_FAKE_NUMBER_TOLONG));
     }
 
     @Test
-    public void checkMessageValidility()
-    {
+    public void checkMessageValidility() {
         RegexParser reggy = new RegexParser();
-        assert(true ==(reggy.checkMessageValidility(TEST_DEPOSITE_MESSAGE)));
-        assert(true ==(reggy.checkMessageValidility(TEST_CASHWITHDRAWAL_MESSAGE)));
-        assert(true ==(reggy.checkMessageValidility(TEST_PURCHASE_MESSAGE)));
+        assertTrue(reggy.checkMessageValidility(TEST_DEPOSITE_MESSAGE));
+        assertTrue(reggy.checkMessageValidility(TEST_CASHWITHDRAWAL_MESSAGE));
+        assertTrue(reggy.checkMessageValidility(TEST_PURCHASE_MESSAGE));
     }
+
 }
