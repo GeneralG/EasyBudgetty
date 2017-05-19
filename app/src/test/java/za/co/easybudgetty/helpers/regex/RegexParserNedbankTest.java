@@ -1,10 +1,15 @@
 package za.co.easybudgetty.helpers.regex;
 
+import android.test.suitebuilder.annotation.LargeTest;
+
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
 /**
  * Created by tyler on 2016/06/26.
  */
+
+@LargeTest
 public class RegexParserNedbankTest {
 
     private static final String TEST_DEPOSITE_MESSAGE = "Nedbank: Electronic Banking EFT deposit of R3000.00 into acc **9999 Avail bal R10000.00 at 20:01 on 01May17. Reg: Monkeys need food";
@@ -20,10 +25,10 @@ public class RegexParserNedbankTest {
     public void checkNumberValidility()
     {
         RegexParser reggy = new RegexParser();
-        assert(true ==(reggy.checkNumberValidility(ZA_NUMBER)));
-        assert(true ==(reggy.checkNumberValidility(ZA_INT_NUMBER)));
-        assert(true ==(reggy.checkNumberValidility(ZA_FAKE_NUMBER)));
-        assert(true ==(reggy.checkNumberValidility(ZA_FAKE_NUMBER_TOLONG)));
+        assert(reggy.checkNumberValidility(ZA_NUMBER));
+        assert(reggy.checkNumberValidility(ZA_INT_NUMBER));
+        assert(reggy.checkNumberValidility(ZA_FAKE_NUMBER));
+        assert(reggy.checkNumberValidility(ZA_FAKE_NUMBER_TOLONG));
     }
 
     @Test

@@ -26,7 +26,7 @@ import java.util.regex.Pattern;
  *          use an even on the interface to relaod from database.
  */
 public class RegexParser {
-    private static String TAG = "za.co.easybudgetty.helpers.regex.RegexParser";
+    private static String TAG = RegexParser.class.getCanonicalName();
 
     private static Pattern amountPattern = Pattern.compile("[0-9].2[0-9]");
     private static Pattern bankPattern = Pattern.compile("Nedbank");
@@ -45,6 +45,8 @@ public class RegexParser {
         //Load currency logic should go here
     }
 
+    //validate the number that the SMS is coming from
+        //this is to check if a message coming into the app or phone should be taken into the applications logic
     public static boolean checkNumberValidility(String number)
     {
         patternMatcher = amountPattern.matcher(number);
@@ -52,10 +54,22 @@ public class RegexParser {
         return patternMatcher.find();
     }
 
+    //Validate that the message contains atleast one amount and a date
+        // best would be to check if there are 2 amounts balance and transaction value
     public static boolean checkMessageValidility(String message)
     {
-
         Log.i(TAG, "checkMessageValidility: RUN");
+
+        int amountsFound = 0;
+        patternMatcher.usePattern(amountPattern);
+        if (patternMatcher.matches())
+        {
+            amountsFound = patternMatcher.groupCount();
+        }
+
+
+        Log.i(TAG, "checkMessageValidility: Groups Found: " + String.valueOf(amountsFound));
+
         return false;
     }
 
