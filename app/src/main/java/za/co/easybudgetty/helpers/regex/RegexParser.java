@@ -35,9 +35,14 @@ public class RegexParser {
     private static Matcher patternMatcher;
 
     static {
-        Currency c = Currency.getInstance(Locale.getAvailableLocales()[0]);
-        bankCurrency = Pattern.compile(c.getSymbol());
+        //Currency c = Currency.getInstance(Locale.getAvailableLocales()[0]);
+        //bankCurrency = Pattern.compile(c.getSymbol());
         //load the currency from the database or logic(use the location of the phone and get the currency of the country).
+    }
+
+    public RegexParser()
+    {
+        //Load currency logic should go here
     }
 
     public static boolean checkNumberValidility(String number)
