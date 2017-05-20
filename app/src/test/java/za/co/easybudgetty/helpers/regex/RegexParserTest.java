@@ -1,12 +1,10 @@
 package za.co.easybudgetty.helpers.regex;
 
-import junit.framework.AssertionFailedError;
+import android.test.mock.MockContext;
+import org.junit.*;
 
-import org.junit.Test;
 
-import za.co.easybudgetty.BuildConfig;
-
-import static org.junit.Assert.*;
+import java.util.logging.Logger;
 
 /**
  * Created by tyler on 2017/05/19.
@@ -22,23 +20,35 @@ public class RegexParserTest {
     private static final String ZA_FAKE_NUMBER="+2700000000000000";
     private static final String ZA_FAKE_NUMBER_TOLONG="+27000000000000000000";
 
+    RegexParser reggy;
+    MockContext mc;
+
+    private static Logger logger = Logger.getLogger(RegexParserTest.class.getCanonicalName());
+
+    @Before
+    public void setup()
+    {
+        reggy = new RegexParser();
+        mc = new MockContext();
+
+    }
+
     @Test
     public void checkMessageNumber()
     {
-        RegexParser reggy = new RegexParser();
         //this is valid should return true
-        assertTrue(reggy.checkNumberValidility(ZA_NUMBER));
-        assertTrue(reggy.checkNumberValidility(ZA_INT_NUMBER));
-        assertTrue(reggy.checkNumberValidility(ZA_FAKE_NUMBER));
-        assertTrue(reggy.checkNumberValidility(ZA_FAKE_NUMBER_TOLONG));
+        Assert.assertTrue(reggy.checkNumberValidility(ZA_NUMBER));
+        Assert.assertTrue(reggy.checkNumberValidility(ZA_INT_NUMBER));
+        Assert.assertFalse(reggy.checkNumberValidility(ZA_FAKE_NUMBER));
+        Assert.assertFalse(reggy.checkNumberValidility(ZA_FAKE_NUMBER_TOLONG));
     }
 
     @Test
     public void checkMessageValidility() {
         RegexParser reggy = new RegexParser();
-        assertTrue(reggy.checkMessageValidility(TEST_DEPOSITE_MESSAGE));
-        assertTrue(reggy.checkMessageValidility(TEST_CASHWITHDRAWAL_MESSAGE));
-        assertTrue(reggy.checkMessageValidility(TEST_PURCHASE_MESSAGE));
+        Assert.assertTrue(reggy.checkMessageValidility(TEST_DEPOSITE_MESSAGE));
+        Assert.assertTrue(reggy.checkMessageValidility(TEST_CASHWITHDRAWAL_MESSAGE));
+        Assert.assertTrue(reggy.checkMessageValidility(TEST_PURCHASE_MESSAGE));
     }
 
 }

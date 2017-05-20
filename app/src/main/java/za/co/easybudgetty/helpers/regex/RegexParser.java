@@ -1,8 +1,5 @@
 package za.co.easybudgetty.helpers.regex;
 
-import android.content.res.Configuration;
-import android.util.Log;
-
 import java.util.Currency;
 import java.util.Locale;
 import java.util.regex.Matcher;
@@ -28,15 +25,29 @@ import java.util.regex.Pattern;
 public class RegexParser {
     private static String TAG = RegexParser.class.getCanonicalName();
 
-    private static Pattern amountPattern = Pattern.compile("[0-9].2[0-9]");
-    private static Pattern bankPattern = Pattern.compile("Nedbank");
-    private static Pattern bankCurrency = null;
+    //Price Patterns
+    private static Pattern pricePattern = Pattern.compile("(R(\\d+[.](\\d){0,2}))");
+    private static Pattern pricePatternWithSpace = Pattern.compile("R\\s(\\d+.\\d{0,2})");
+    private static Pattern pricePatternWithSpaceDelimeter = Pattern.compile("R\\s(\\d{0,3}\\s)+(\\d{0,3})[.](\\d{0,2})");
 
+    //Receiving message Number
+    private static Pattern cellNumberPattern = Pattern.compile("^([+]{0,1})\\d{10,15}$");
+
+    //Bank Name pattern
+    private static Pattern bankPattern = Pattern.compile("Nedbank");
+
+    //The currency pattern
+    private static Pattern currencyPattern = null;
+
+    //Pattern to match the last 4 digits of a card number
+    private static Pattern cardNumberPattern = Pattern.compile("([*]\\d{4,4})");
+
+    //Matcher for regex
     private static Matcher patternMatcher;
 
     static {
-        //Currency c = Currency.getInstance(Locale.getAvailableLocales()[0]);
-        //bankCurrency = Pattern.compile(c.getSymbol());
+        Currency c = Currency.getInstance(Locale.getDefault());
+        currencyPattern = Pattern.compile(c.getSymbol());
         //load the currency from the database or logic(use the location of the phone and get the currency of the country).
     }
 
@@ -49,8 +60,7 @@ public class RegexParser {
         //this is to check if a message coming into the app or phone should be taken into the applications logic
     public static boolean checkNumberValidility(String number)
     {
-        patternMatcher = amountPattern.matcher(number);
-        Log.i(TAG, "checkNumberValidility: RUN");
+        patternMatcher = cellNumberPattern.matcher(number);
         return patternMatcher.find();
     }
 
@@ -58,19 +68,43 @@ public class RegexParser {
         // best would be to check if there are 2 amounts balance and transaction value
     public static boolean checkMessageValidility(String message)
     {
-        Log.i(TAG, "checkMessageValidility: RUN");
+        int keysFound = 0;
+        patternMatcher = pricePattern.matcher(message);
 
-        int amountsFound = 0;
-        patternMatcher.usePattern(amountPattern);
-        if (patternMatcher.matches())
+        //Amounts have been found
+        if (patternMatcher.find())
         {
-            amountsFound = patternMatcher.groupCount();
+            keysFound += 1;
+        }
+        
+        //Check for currency
+        patternMatcher = currencyPattern.matcher(message);
+        if (patternMatcher.find())
+        {
+            keysFound += 1;
         }
 
+        //Check for Bank name
+        patternMatcher = bankPattern.matcher(message);
+        if (patternMatcher.find())
+        {
+            keysFound += 1;
+        }
 
-        Log.i(TAG, "checkMessageValidility: Groups Found: " + String.valueOf(amountsFound));
+        //Check for last 4 digits of a card number *1234
+        patternMatcher = cardNumberPattern.matcher(message);
+        if (patternMatcher.find())
+        {
+            keysFound += 1;
+        }
 
-        return false;
+        if (keysFound >= 4)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
-
 }
